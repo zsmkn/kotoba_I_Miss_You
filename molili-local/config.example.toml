@@ -1,0 +1,42 @@
+# 複製成 config.toml 後修改。API key 也可以改用環境變數設定。
+
+# data_dir = "data"
+
+[llm]
+provider = "ollama"        # ollama | gemini | openai
+temperature = 0.9
+
+[llm.ollama]
+base_url = "http://localhost:11434"
+model = ""                 # 留空 = 自動使用已安裝的第一個模型
+num_ctx = 16384            # 上下文長度；人設約 5k tokens，太小會被截斷
+
+[llm.gemini]
+model = "gemini-2.5-flash" # 原版 Molili 聊天用的模型
+api_key = ""               # 或設定環境變數 GEMINI_API_KEY
+
+[llm.openai]
+model = "gpt-4.1-mini"
+api_key = ""               # 或設定環境變數 OPENAI_API_KEY
+# base_url = "https://api.openai.com/v1"   # 也可以指向任何 OpenAI 相容服務
+
+[chat]
+agent_name = "言葉"
+language = "zh-TW"         # zh-TW | zh-CN | ja | en
+history_messages = 30      # 放進上下文的近期訊息數
+memory_top_k = 6           # 每輪最多檢索幾則過往事件
+summarize_memory = true    # 每輪對話後讓模型整理成事件記憶（會多一次 API 呼叫）
+greet_after_hours = 6      # 隔多久沒聊，開啟時她會主動打招呼
+idle_chat_minutes = 40     # 桌寵：你在電腦前但這麼久沒聊，她會自己找話題（0 = 關閉）
+suggestions = true         # 回覆時附上三則推薦回覆
+web_search = true          # 允許她上網查即時資訊（DuckDuckGo，搜尋關鍵字會送到 DuckDuckGo）
+diary = true               # 每天補寫前一天的日記
+profile_update_every = 10  # 每累積幾則新訊息更新一次「關於你」的畫像（0 = 關閉）
+
+# 拍照／畫圖（原版的「相機＋以太膠片」）。每張照片用掉一捲膠片，每天補充到 3 捲。
+[image]
+provider = "none"          # none | openai | gemini | sd-webui
+# model = ""               # 預設：openai → gpt-image-1、gemini → gemini-2.5-flash-image
+# base_url = ""            # sd-webui 預設 http://127.0.0.1:7860（WebUI 要加 --api 啟動）
+# api_key = ""             # 留空則沿用 [llm.openai] / [llm.gemini] 的 key 或環境變數
+favor_per_message = 1

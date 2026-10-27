@@ -1,0 +1,12 @@
+# 玩家個人資料與官方素材，一律不進版控
+data/
+config.toml
+*.zip
+
+.venv/
+__pycache__/
+*.pyc
+
+# 打包產物（python packaging/build.py）
+build/
+dist/

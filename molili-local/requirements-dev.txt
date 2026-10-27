@@ -1,0 +1,2 @@
+-r requirements.txt
+pyinstaller>=6.0          # 打包成免安裝 exe：python packaging/build.py

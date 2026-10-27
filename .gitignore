@@ -1,0 +1,36 @@
+# 參考資料：官方釋出的個人資料、Live2D 模型與遊戲本體，一律不進版控
+Archive/
+
+# 打包好的 ZIP 與任何 Live2D 素材都不上傳，一律由使用者自行匯入
+*.zip
+*.moc3
+*.model3.json
+*.motion3.json
+*.exp3.json
+*.physics3.json
+*.cdi3.json
+*.pose3.json
+*.userdata3.json
+
+# 個人工作紀錄與 Claude 設定
+summary_*.md
+CLAUDE.md
+plan.md
+.claude/
+
+# 機密設定
+.env
+.env.*
+
+# 編輯器與作業系統產生的檔案
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 測試與工具快取
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.log
